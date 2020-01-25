@@ -19,16 +19,9 @@ class _HomeState extends State<Home> {
   List _toDoList = [];
   final _toDoTextController = TextEditingController();
 
-  void _addToDo() {
-    Map<String, dynamic> newTodo = new Map();
-    if (_toDoTextController.text.isNotEmpty) {
-      setState(() {
-        newTodo['title'] = _toDoTextController.text;
-        newTodo['ok'] = false;
-        _toDoTextController.text = '';
-        _toDoList.add(newTodo);
-      });
-    }
+  @override 
+  void initState() {
+    
   }
 
   @override
@@ -109,6 +102,18 @@ class _HomeState extends State<Home> {
       return file.readAsString();
     } catch (e) {
       return null;
+    }
+  }
+
+  void _addToDo() {
+    Map<String, dynamic> newTodo = new Map();
+    if (_toDoTextController.text.isNotEmpty) {
+      setState(() {
+        newTodo['title'] = _toDoTextController.text;
+        newTodo['ok'] = false;
+        _toDoTextController.text = '';
+        _toDoList.add(newTodo);
+      });
     }
   }
 }
